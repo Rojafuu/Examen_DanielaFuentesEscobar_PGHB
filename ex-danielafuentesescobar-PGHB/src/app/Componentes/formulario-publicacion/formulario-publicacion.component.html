@@ -1,0 +1,90 @@
+
+<ion-list>
+  <!-- Campo de título -->
+  <ion-item>
+    <ion-label position="stacked">Título</ion-label>
+    <ion-input
+      [(ngModel)]="titulo"
+      required="required"
+      minlength="5"
+      #tituloInput="ngModel"
+      placeholder="Titulo de la publicación"
+    ></ion-input>
+  </ion-item>
+
+  <!-- Mensaje de error para el título -->
+  <ion-item *ngIf="tituloInput.invalid && tituloInput.touched">
+    <ion-text color="danger">El título debe tener al menos 5 caracteres.</ion-text>
+  </ion-item>
+
+  <!-- Campo de descripción -->
+  <ion-item>
+    <ion-label position="stacked">Descripción</ion-label>
+    <ion-input
+      [(ngModel)]="descripcion"
+      required="required"
+      minlength="20"
+      #descripcionInput="ngModel"
+      placeholder="Descripción de la publicación"
+    ></ion-input>
+  </ion-item>
+
+  <!-- Mensaje de error para la descripción -->
+  <ion-item *ngIf="descripcionInput.invalid && descripcionInput.touched">
+    <ion-text color="danger">La descripción debe tener al menos 20 caracteres.</ion-text>
+  </ion-item>
+
+  <!-- Campo de foto -->
+  <ion-item>
+    <ion-label position="stacked">Foto URL</ion-label>
+    <ion-input
+      [(ngModel)]="foto"
+      required="required"
+      #fotoInput="ngModel"
+      placeholder="URL de la foto"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+  <ion-content [fullscreen]="true">
+    <ion-button (click)="tomarFoto()"> tomar Foto </ion-button>
+    <ion-grid>
+      <ion-row> 
+        <ion-col size="6" *ngFor="let f of foto">
+          <ion-img [src]="'data:image/jpeg:base64,' + f"/>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-item>
+
+  <!-- Mensaje de error para la foto -->
+  <ion-item *ngIf="fotoInput.invalid && fotoInput.touched">
+    <ion-text color="danger">La URL de la foto es obligatoria.</ion-text>
+  </ion-item>
+
+ 
+
+  <ion-item>
+    <ion-label position="stacked">Fecha</ion-label>
+    <ion-input 
+      [(ngModel)]="fecha"
+      [value]="fecha | date: 'yyyy-MM-dd'"
+      required="required"
+      #fechaInput="ngModel"
+      [readonly]="true"
+    ></ion-input>
+  </ion-item>
+
+
+<ion-item>
+  <ion-button
+    [disabled]="!tituloInput.valid || !descripcionInput.valid || !fotoInput.valid"
+    (click)="onClick()"
+    expand="block"
+    color="primary"
+  >
+    AGREGAR PUBLICACIÓN
+  </ion-button>
+</ion-item>
+</ion-list>

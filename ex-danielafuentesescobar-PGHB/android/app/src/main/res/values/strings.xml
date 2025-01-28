@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ex-danielafuentesescobar</string>
+    <string name="title_activity_main">ex-danielafuentesescobar</string>
+    <string name="package_name">ex.danielafuentesescobar</string>
+    <string name="custom_url_scheme">ex.danielafuentesescobar</string>
+</resources>

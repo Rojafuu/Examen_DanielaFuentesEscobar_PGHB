@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      PUBLICACIONES
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- Lista de publicaciones -->
+  <app-lista-publicaciones [publicaciones]="Lista_publicaciones" (onDelete)="deletePublicacion($event)"/>
+
+
+  <!-- Botón para agregar nueva publicación -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/publicacion']">
+      <ion-icon name="add" aria-label="Botón que dirige a la página para agregar una publicación"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+

@@ -1,0 +1,38 @@
+<ion-list>
+  <ion-item *ngFor="let p of publicaciones">
+    
+    <!-- Imagen -->
+    <ion-img [src]="p.foto" class="publicacion-img" />
+
+    <ion-label>
+      <h2>{{ p.titulo }}</h2>
+      <p>{{ p.descripcion }}</p>
+      <p>{{ p.fecha }}</p>
+    </ion-label>
+
+    <!-- Botón para eliminar publicación -->
+    <ion-button (click)="openDeleteModal(p)" fill="clear">
+      <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+  </ion-item>
+</ion-list>
+
+<!-- Modal para confirmación de eliminación -->
+<ion-modal [isOpen]="isModalPriceOpen">
+  <ng-template>
+    <ion-header>
+      <ion-title>Eliminar Publicación</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-header>
+    <ion-content>
+      <ion-text>
+        <h2>¿Estás seguro de que deseas eliminar esta publicación?</h2>
+      </ion-text>
+      <ion-button expand="full" color="danger" (click)="confirmDelete()">Eliminar</ion-button>
+      <ion-button expand="full" color="medium" (click)="closeModal()">Cancelar</ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>
